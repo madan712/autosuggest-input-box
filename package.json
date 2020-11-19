@@ -2,7 +2,7 @@
   "name": "autosuggest-input-box",
   "version": "1.0.1",
   "description": "A simple react autosuggestion input field",
-  "main": "autosuggest-input-box.js",
+  "main": "src/autosuggest-input-box",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

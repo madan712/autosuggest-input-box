@@ -1,5 +1,5 @@
 import React from "react";
-import './AutoSuggestInput.css';
+import './app.css';
 
 export default class AutoSuggestInput extends React.Component {
     

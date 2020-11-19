@@ -10,10 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/madan712/autosuggest-input-box.git"
   },
-  "keywords": [
-    "test",
-    "test"
-  ],
+  "keywords": ["auto suggest", "react auto suggest", "auto complete dropdown", "react auto dropdown", "react-auto-complete", "react-auto-suggest", "auto suggestions", "react dropdown"],
   "author": "Madan Chaudhary",
   "license": "MIT",
   "bugs": {

@@ -1,0 +1,23 @@
+{
+  "name": "autosuggest-input-box",
+  "version": "1.0.0",
+  "description": "A simple react autosuggestion input field",
+  "main": "autosuggest-input-box.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madan712/autosuggest-input-box.git"
+  },
+  "keywords": [
+    "test",
+    "test"
+  ],
+  "author": "Madan Chaudhary",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/madan712/autosuggest-input-box/issues"
+  },
+  "homepage": "https://github.com/madan712/autosuggest-input-box#readme"
+}

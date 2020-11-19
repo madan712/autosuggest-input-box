@@ -35,7 +35,7 @@ export default class AutoSuggestInput extends React.Component {
     getSuggestionListComponent() {
         if(this.state.suggestions.length !== 0 && this.state.showOption) {
             return (
-                    <ul className='suggestion-list'>
+                    <ul class='suggestion-list'>
                     {
                         this.state.suggestions.map((item,index) => {
                             const className = index === this.state.activeIndex ? 'suggestion-item-hover' : 'suggestion-item';

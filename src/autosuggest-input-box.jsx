@@ -35,11 +35,11 @@ export default class AutoSuggestInput extends React.Component {
     getSuggestionListComponent() {
         if(this.state.suggestions.length !== 0 && this.state.showOption) {
             return (
-                    <ul class='suggestion-list'>
+                    <ul className='suggestion-list'>
                     {
                         this.state.suggestions.map((item,index) => {
                             const className = index === this.state.activeIndex ? 'suggestion-item-hover' : 'suggestion-item';
-                            return <li class={className} key={item} onMouseDown={this.onItemSelect} onMouseEnter={this.removeHover}>{item}</li>
+                            return <li className={className} key={item} onMouseDown={this.onItemSelect} onMouseEnter={this.removeHover}>{item}</li>
                         })
                     }
                     </ul>
@@ -93,7 +93,7 @@ export default class AutoSuggestInput extends React.Component {
         
         return (
                <>
-               <input type="text" autoComplete="off" class={this.props.className} id={this.props.id} placeholder={this.props.placeholder} 
+               <input type="text" autoComplete="off" className={this.props.className} id={this.props.id} placeholder={this.props.placeholder} 
                    onChange={this.onInputChange} onKeyDown={this.onKeyDown} onBlur={this.onBlur} onFocus={this.onInputChange} onClick={this.onInputChange} value={this.state.value}
                />
                {this.getSuggestionListComponent()}

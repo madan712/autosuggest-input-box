@@ -1,6 +1,6 @@
 {
   "name": "autosuggest-input-box",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A simple react autosuggestion input field",
   "main": "./src/autosuggest-input-box",
   "scripts": {

@@ -59,9 +59,9 @@ export default App;
 ## API
 
 |Prop | Type | Required | Description|
-|:----|:-----|:---------|:-----------|
+|:----|:-----|:---------:|:-----------|
 |[`list`](#list) | Array|✓| This contains list of values to be shown as suggestions|
 |[`onChange`](#onChange) | Function|✓| This function is used to capture the change in input box. It can be used to update the state in your file.|
 |[`className`](#className)|String| | Pass your custom CSS class name(s) for the input box|
-|[`id`](#id)|String| | Element id to uniquely identify the element in DOM|
+|[`id`](#id)|String| | Element id to uniquely identify the input box in DOM|
 |[`placeholder`](#placeholder)|String| |Placeholder for the input box|

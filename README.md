@@ -1,7 +1,22 @@
 # A simple react auto suggest input box
 A simple baisc auto suggest input box for react form, just pass the list of suggestions and get the selected value in react state for futher processing.
 
-How to use it
+## Install
+
+### npm
+```
+npm install --save autosuggest-input-box
+```
+
+### yarn
+
+```
+yarn add autosuggest-input-box
+```
+
+# How to use it
+
+## Example
 
 ```javascript
 import { Component } from "react";

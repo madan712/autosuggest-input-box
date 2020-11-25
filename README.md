@@ -3,7 +3,7 @@ A simple baisc auto suggest input box for react form, just pass the list of sugg
 
 How to use it
 
-```
+```javascript
 import { Component } from "react";
 import AutoSuggestInput from "autosuggest-input-box";
 

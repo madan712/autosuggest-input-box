@@ -14,8 +14,6 @@ npm install --save autosuggest-input-box
 yarn add autosuggest-input-box
 ```
 
-# How to use it
-
 ## Example
 
 ```javascript
@@ -26,9 +24,9 @@ const suggestions = ["China","India","United States","Indonesia","Pakistan","Bra
 
 export class App extends Component {
 	constructor(props) {
-        super(props);
+		super(props);
 		this.state = {value: ''};
-        this.onChange = this.onChange.bind(this);
+		this.onChange = this.onChange.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
       }
 	  
@@ -57,3 +55,11 @@ export class App extends Component {
 
 export default App;
 ```
+
+## API
+
+Prop | Type | Required | Description
+---|---|---|---|---
+[`list`](#list) | Array|✓| This contains list of values to be shown as suggestions
+---|---|---|---|---
+[`onChange`](#onChange) | Function|✓| This function is used to capture the change in input box. It can be used to update the state in your file.

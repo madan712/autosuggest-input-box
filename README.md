@@ -57,9 +57,10 @@ export default App;
 ```
 
 ## API
-
-Prop | Type | Required | Description
----|---|---|---|---
-[`list`](#list) | Array|✓| This contains list of values to be shown as suggestions
----|---|---|---|---
-[`onChange`](#onChange) | Function|✓| This function is used to capture the change in input box. It can be used to update the state in your file.
+|---|---|---|---|---|
+|Prop | Type | Required | Description|
+|---|---|---|---|---|
+|[`list`](#list) | Array|✓| This contains list of values to be shown as suggestions|
+|---|---|---|---|---|
+[`onChange`](#onChange) | Function|✓| This function is used to capture the change in input box. It can be used to update the state in your file.|
+|---|---|---|---|---|

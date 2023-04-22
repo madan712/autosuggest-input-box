@@ -1,2 +1,9 @@
 /node_modules
 /build
+.idea
+yarn.lock
+/dist
+
+
+
+yarn-error.log

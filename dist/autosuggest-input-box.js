@@ -1,199 +1,157 @@
 "use strict";
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-require("./app.css");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var AutoSuggestInput = /*#__PURE__*/function (_React$Component) {
-  _inherits(AutoSuggestInput, _React$Component);
-
-  var _super = _createSuper(AutoSuggestInput);
-
-  function AutoSuggestInput(props) {
-    var _this;
-
-    _classCallCheck(this, AutoSuggestInput);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      value: '',
-      showOption: false,
-      suggestions: [],
-      activeIndex: -1
-    };
-    _this.onInputChange = _this.onInputChange.bind(_assertThisInitialized(_this));
-    _this.onItemSelect = _this.onItemSelect.bind(_assertThisInitialized(_this));
-    _this.onKeyDown = _this.onKeyDown.bind(_assertThisInitialized(_this));
-    _this.onBlur = _this.onBlur.bind(_assertThisInitialized(_this));
-    _this.getSuggestions = _this.getSuggestions.bind(_assertThisInitialized(_this));
-    _this.removeHover = _this.removeHover.bind(_assertThisInitialized(_this));
-    _this.updateValue = _this.updateValue.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(AutoSuggestInput, [{
-    key: "onBlur",
-    value: function onBlur(event) {
-      this.setState({
-        showOption: false,
-        activeIndex: -1
-      });
+exports.AutoSuggestInput = void 0;
+var _react = require("react");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+var AutoSuggestInput = function AutoSuggestInput(props) {
+  var _useState = (0, _react.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    showOption = _useState2[0],
+    setShowOption = _useState2[1];
+  var _useState3 = (0, _react.useState)(''),
+    _useState4 = _slicedToArray(_useState3, 2),
+    value = _useState4[0],
+    setValue = _useState4[1];
+  var _useState5 = (0, _react.useState)([]),
+    _useState6 = _slicedToArray(_useState5, 2),
+    suggestions = _useState6[0],
+    setSuggestions = _useState6[1];
+  var _useState7 = (0, _react.useState)(-1),
+    _useState8 = _slicedToArray(_useState7, 2),
+    activeIndex = _useState8[0],
+    setActiveIndex = _useState8[1];
+  var onChange = function onChange(event) {
+    var input = event.target.value;
+    setValue(input);
+    setSuggestions(getSuggestions(input));
+    setShowOption(true);
+  };
+  var getSuggestions = function getSuggestions(input) {
+    var inputValue = input.trim().toLowerCase();
+    var inputLength = inputValue.length;
+    var suggestions = inputLength === 0 ? [] : props.list.filter(function (v) {
+      return v.toLowerCase().includes(inputValue);
+    });
+    return suggestions.length === 1 && suggestions[0].toLowerCase() === inputValue ? [] : suggestions;
+  };
+  var SuggestionList = function SuggestionList() {
+    if (suggestions.length > 0 && showOption) {
+      var listStyle = props.listStyle ? _objectSpread(_objectSpread({}, props.listStyle), {}, {
+        display: 'block',
+        position: 'absolute'
+      }) : {
+        display: 'block',
+        position: 'absolute',
+        width: '200px',
+        color: '#495057',
+        fontFamily: "'Roboto', sans-serif",
+        fontSize: '0.75rem',
+        fontWeight: '400',
+        padding: '0px 0px',
+        margin: '0px',
+        zIndex: '999'
+      };
+      var itemStyle = props.itemStyle ? _objectSpread(_objectSpread({}, props.itemStyle), {}, {
+        listStyleType: 'none'
+      }) : {
+        padding: '10px',
+        backgroundColor: '#fff',
+        border: '1px solid #d4d4d4',
+        borderTop: 'none',
+        listStyleType: 'none'
+      };
+      var itemHoverStyle = props.itemHoverStyle ? _objectSpread(_objectSpread({}, props.itemHoverStyle), {}, {
+        listStyleType: 'none'
+      }) : {
+        padding: '10px',
+        backgroundColor: '#e9e9e9',
+        border: '1px solid #d4d4d4',
+        borderTop: 'none',
+        listStyleType: 'none'
+      };
+      var firstItemStyle = props.firstItemStyle ? props.firstItemStyle : itemStyle;
+      var lastItemStyle = props.lastItemStyle ? props.lastItemStyle : itemStyle;
+      return /*#__PURE__*/React.createElement("ul", {
+        style: listStyle
+      }, suggestions.map(function (item, index) {
+        var iStyle = index === activeIndex ? itemHoverStyle : suggestions.length === index + 1 ? lastItemStyle : index === 0 ? firstItemStyle : itemStyle;
+        return /*#__PURE__*/React.createElement("li", {
+          style: iStyle,
+          key: item,
+          onMouseDown: onItemSelect,
+          onMouseEnter: function onMouseEnter() {
+            return setActiveIndex(index);
+          }
+        }, item);
+      }));
     }
-  }, {
-    key: "onInputChange",
-    value: function onInputChange(event) {
-      var input = event.target.value;
-      this.setState({
-        value: input,
-        showOption: true,
-        suggestions: this.getSuggestions(input)
-      });
-    }
-  }, {
-    key: "getSuggestions",
-    value: function getSuggestions(input) {
-      var inputValue = input.trim().toLowerCase();
-      var inputLength = inputValue.length;
-      var suggestions = inputLength === 0 ? [] : this.props.list.filter(function (v) {
-        return v.toLowerCase().includes(inputValue);
-      });
-      return suggestions.length === 1 && suggestions[0].toLowerCase() === inputValue ? [] : suggestions;
-    }
-  }, {
-    key: "getSuggestionListComponent",
-    value: function getSuggestionListComponent() {
-      var _this2 = this;
-
-      if (this.state.suggestions.length !== 0 && this.state.showOption) {
-        return /*#__PURE__*/_react["default"].createElement("ul", {
-          className: "suggestion-list"
-        }, this.state.suggestions.map(function (item, index) {
-          var className = index === _this2.state.activeIndex ? 'suggestion-item-hover' : 'suggestion-item';
-          return /*#__PURE__*/_react["default"].createElement("li", {
-            className: className,
-            key: item,
-            onMouseDown: _this2.onItemSelect,
-            onMouseEnter: _this2.removeHover
-          }, item);
-        }));
-      }
-    }
-  }, {
-    key: "removeHover",
-    value: function removeHover() {
-      this.setState({
-        activeIndex: -1
-      });
-    }
-  }, {
-    key: "onItemSelect",
-    value: function onItemSelect(event) {
-      this.updateValue(event.target.innerText);
-    }
-  }, {
-    key: "updateValue",
-    value: function updateValue(val) {
-      this.setState({
-        value: val,
-        showOption: false,
-        activeIndex: -1
-      });
-      this.props.onChange(val);
-    }
-  }, {
-    key: "onKeyDown",
-    value: function onKeyDown(event) {
-      var index = this.state.activeIndex;
-      var active = '';
-
-      if (event.keyCode === 38) {
-        if (index > 0) {
-          this.setState({
-            activeIndex: index - 1
-          });
-        } else {
-          this.setState({
-            activeIndex: this.state.suggestions.length - 1
-          });
-        }
-
-        active = this.state.suggestions[index - 1];
-      } else if (event.keyCode === 40) {
-        if (this.state.suggestions.length > index + 1) {
-          this.setState({
-            activeIndex: index + 1
-          });
-        } else {
-          this.setState({
-            activeIndex: 0
-          });
-        }
-
-        active = this.state.suggestions[index];
-      } else if (event.keyCode === 13) {
-        active = this.state.suggestions[index];
-
-        if (active) {
-          this.updateValue(active);
-        }
-
-        event.preventDefault();
+  };
+  var onItemSelect = function onItemSelect(event) {
+    updateValue(event.target.innerText);
+  };
+  var updateValue = function updateValue(value) {
+    setValue(value);
+    setShowOption(false);
+    setActiveIndex(-1);
+    props.onChange(value);
+  };
+  var onKeyDown = function onKeyDown(event) {
+    var index = activeIndex;
+    var active = '';
+    if (event.keyCode === 38) {
+      if (index > 0) {
+        setActiveIndex(index - 1);
       } else {
-        this.setState({
-          showOption: false,
-          activeIndex: -1
-        });
+        setActiveIndex(suggestions.length - 1);
       }
+    } else if (event.keyCode === 40) {
+      if (suggestions.length > index + 1) {
+        setActiveIndex(index + 1);
+      } else {
+        setActiveIndex(0);
+      }
+    } else if (event.keyCode === 13) {
+      active = suggestions[index];
+      if (active) {
+        updateValue(active);
+      }
+      event.preventDefault();
+    } else {
+      setShowOption(false);
+      setActiveIndex(-1);
     }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("input", {
-        type: "text",
-        autoComplete: "off",
-        className: this.props.className,
-        id: this.props.id,
-        placeholder: this.props.placeholder,
-        onChange: this.onInputChange,
-        onKeyDown: this.onKeyDown,
-        onBlur: this.onBlur,
-        onFocus: this.onInputChange,
-        onClick: this.onInputChange,
-        value: this.state.value
-      }), this.getSuggestionListComponent());
-    }
-  }]);
-
-  return AutoSuggestInput;
-}(_react["default"].Component);
-
-exports["default"] = AutoSuggestInput;
+  };
+  var onBlur = function onBlur(event) {
+    setShowOption(false);
+    setActiveIndex(-1);
+  };
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    autoComplete: "off",
+    id: props.id,
+    name: props.name,
+    style: props.inputStyle,
+    placeholder: props.placeholder,
+    onChange: onChange,
+    onKeyDown: onKeyDown,
+    onBlur: onBlur,
+    onFocus: onChange,
+    onClick: onChange,
+    value: value
+  }), /*#__PURE__*/React.createElement(SuggestionList, null));
+};
+exports.AutoSuggestInput = AutoSuggestInput;

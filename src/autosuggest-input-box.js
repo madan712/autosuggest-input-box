@@ -1,103 +1,168 @@
-import React from "react";
-import './app.css';
+import React from 'react';
+import { useState } from 'react';
 
-export default class AutoSuggestInput extends React.Component {
-    
-    constructor(props) {
-        super(props);
-        this.state = {value: '', showOption: false, suggestions: [], activeIndex: -1};
-		
-        this.onInputChange = this.onInputChange.bind(this);
-        this.onItemSelect = this.onItemSelect.bind(this);
-        this.onKeyDown = this.onKeyDown.bind(this);
-        this.onBlur = this.onBlur.bind(this);
-        this.getSuggestions = this.getSuggestions.bind(this);
-		this.removeHover = this.removeHover.bind(this);
-		this.updateValue = this.updateValue.bind(this);
-    }
-    
-    onBlur(event) {
-        this.setState({ showOption: false, activeIndex: -1 });
-    }
-    
-    onInputChange(event) {
-		const input = event.target.value;
-        this.setState({ value: input, showOption: true, suggestions: this.getSuggestions(input)});
-    }
-    
-    getSuggestions(input) {
+export default const AutoSuggestInput = (props) => {
+    const [showOption, setShowOption] = useState(false);
+    const [value, setValue] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
+    const [activeIndex, setActiveIndex] = useState(-1);
+
+    const onChange = (event) => {
+        const input = event.target.value;
+        setValue(input);
+        setSuggestions(getSuggestions(input));
+        setShowOption(true);
+    };
+
+    const getSuggestions = (input) => {
         const inputValue = input.trim().toLowerCase();
         const inputLength = inputValue.length;
-        const suggestions = inputLength === 0 ? [] : this.props.list.filter(v => v.toLowerCase().includes(inputValue));        
-        return suggestions.length === 1 && suggestions[0].toLowerCase() === inputValue ? [] : suggestions;
-    }
-    
-    getSuggestionListComponent() {
-        if(this.state.suggestions.length !== 0 && this.state.showOption) {
+        const suggestions =
+            inputLength === 0
+                ? []
+                : props.list.filter((v) =>
+                    v.toLowerCase().includes(inputValue)
+                );
+        return suggestions.length === 1 &&
+        suggestions[0].toLowerCase() === inputValue
+            ? []
+            : suggestions;
+    };
+
+    const SuggestionList = () => {
+        if (suggestions.length > 0 && showOption) {
+            const listStyle = props.listStyle
+                ? { ...props.listStyle, display: 'block', position: 'absolute' }
+                : {
+                    display: 'block',
+                    position: 'absolute',
+                    width: '200px',
+                    color: '#495057',
+                    fontFamily: "'Roboto', sans-serif",
+                    fontSize: '0.75rem',
+                    fontWeight: '400',
+                    padding: '0px 0px',
+                    margin: '0px',
+                    zIndex: '999',
+                };
+
+            const itemStyle = props.itemStyle
+                ? { ...props.itemStyle, listStyleType: 'none' }
+                : {
+                    padding: '10px',
+                    backgroundColor: '#fff',
+                    border: '1px solid #d4d4d4',
+                    borderTop: 'none',
+                    listStyleType: 'none',
+                };
+
+            const itemHoverStyle = props.itemHoverStyle
+                ? { ...props.itemHoverStyle, listStyleType: 'none' }
+                : {
+                    padding: '10px',
+                    backgroundColor: '#e9e9e9',
+                    border: '1px solid #d4d4d4',
+                    borderTop: 'none',
+                    listStyleType: 'none',
+                };
+
+            const firstItemStyle = props.firstItemStyle
+                ? props.firstItemStyle
+                : itemStyle;
+
+            const lastItemStyle = props.lastItemStyle
+                ? props.lastItemStyle
+                : itemStyle;
+
             return (
-                    <ul className='suggestion-list'>
-                    {
-                        this.state.suggestions.map((item,index) => {
-                            const className = index === this.state.activeIndex ? 'suggestion-item-hover' : 'suggestion-item';
-                            return <li className={className} key={item} onMouseDown={this.onItemSelect} onMouseEnter={this.removeHover}>{item}</li>
-                        })
-                    }
-                    </ul>
+                <ul style={listStyle}>
+                    {suggestions.map((item, index) => {
+                        const iStyle =
+                            index === activeIndex
+                                ? itemHoverStyle
+                                : suggestions.length === index + 1
+                                    ? lastItemStyle
+                                    : index === 0
+                                        ? firstItemStyle
+                                        : itemStyle;
+
+                        return (
+                            <li
+                                style={iStyle}
+                                key={item}
+                                onMouseDown={onItemSelect}
+                                onMouseEnter={() => setActiveIndex(index)}
+                            >
+                                {item}
+                            </li>
+                        );
+                    })}
+                </ul>
             );
         }
-    }
-	
-	removeHover() {
-        this.setState({ activeIndex: -1 });
-    }
-    
-    onItemSelect(event) {
-		this.updateValue(event.target.innerText);
-    }
-	
-	updateValue(val) {
-		this.setState({ value: val, showOption: false, activeIndex: -1 });
-		this.props.onChange(val);
-	}
-    
-    onKeyDown(event) {
-        const index = this.state.activeIndex;
+    };
+
+    const onItemSelect = (event) => {
+        updateValue(event.target.innerText);
+    };
+
+    const updateValue = (value) => {
+        setValue(value);
+        setShowOption(false);
+        setActiveIndex(-1);
+        props.onChange(value);
+    };
+
+    const onKeyDown = (event) => {
+        const index = activeIndex;
         let active = '';
-        
+
         if (event.keyCode === 38) {
-            if(index > 0) {
-                this.setState({ activeIndex: index - 1});
+            if (index > 0) {
+                setActiveIndex(index - 1);
             } else {
-                this.setState({ activeIndex: this.state.suggestions.length - 1});
+                setActiveIndex(suggestions.length - 1);
             }
-            active = this.state.suggestions[index - 1];
         } else if (event.keyCode === 40) {
-            if(this.state.suggestions.length > index + 1) {
-                this.setState({ activeIndex: index + 1});
+            if (suggestions.length > index + 1) {
+                setActiveIndex(index + 1);
             } else {
-                this.setState({ activeIndex: 0});
+                setActiveIndex(0);
             }
-            active = this.state.suggestions[index];
-        } else if(event.keyCode === 13) {
-            active = this.state.suggestions[index];
-			if(active) {
-				this.updateValue(active);
-			}
+        } else if (event.keyCode === 13) {
+            active = suggestions[index];
+            if (active) {
+                updateValue(active);
+            }
             event.preventDefault();
         } else {
-            this.setState({ showOption: false, activeIndex: -1});
+            setShowOption(false);
+            setActiveIndex(-1);
         }
-    }
-    
-    render() {        
-        
-        return (
-               <>
-               <input type="text" autoComplete="off" className={this.props.className} id={this.props.id} placeholder={this.props.placeholder} 
-                   onChange={this.onInputChange} onKeyDown={this.onKeyDown} onBlur={this.onBlur} onFocus={this.onInputChange} onClick={this.onInputChange} value={this.state.value}
-               />
-               {this.getSuggestionListComponent()}
-               </>
-        );
-    }
-}
+    };
+
+    const onBlur = (event) => {
+        setShowOption(false);
+        setActiveIndex(-1);
+    };
+
+    return (
+        <>
+            <input
+                type="text"
+                autoComplete="off"
+                id={props.id}
+                name={props.name}
+                style={props.inputStyle}
+                placeholder={props.placeholder}
+                onChange={onChange}
+                onKeyDown={onKeyDown}
+                onBlur={onBlur}
+                onFocus={onChange}
+                onClick={onChange}
+                value={value}
+            />
+            <SuggestionList />
+        </>
+    );
+};

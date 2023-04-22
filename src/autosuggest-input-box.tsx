@@ -1,20 +1,36 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import { useState } from 'react';
 
-export default const AutoSuggestInput = (props) => {
-    const [showOption, setShowOption] = useState(false);
-    const [value, setValue] = useState('');
-    const [suggestions, setSuggestions] = useState([]);
-    const [activeIndex, setActiveIndex] = useState(-1);
+interface Props {
+    id?: string;
+    name?: string;
+    list: string[];
+    onChange: (selected: string) => void;
+    listStyle?: React.CSSProperties;
+    itemStyle?: React.CSSProperties;
+    itemHoverStyle?: React.CSSProperties;
+    inputStyle?: React.CSSProperties;
+    placeholder?: string;
+    /**
+     * @deprecated
+     */
+    className?: string;
+}
 
-    const onChange = (event) => {
-        const input = event.target.value;
+const AutoSuggestInput = (props: Props) => {
+    const [showOption, setShowOption] = useState<boolean>(false);
+    const [value, setValue] = useState<string>('in');
+    const [suggestions, setSuggestions] = useState<string[]>([]);
+    const [activeIndex, setActiveIndex] = useState<number>(-1);
+
+    const onChange = (event: any) => {
+        const input: string = event.target.value;
         setValue(input);
         setSuggestions(getSuggestions(input));
         setShowOption(true);
     };
 
-    const getSuggestions = (input) => {
+    const getSuggestions = (input: string): string[] => {
         const inputValue = input.trim().toLowerCase();
         const inputLength = inputValue.length;
         const suggestions =
@@ -29,14 +45,14 @@ export default const AutoSuggestInput = (props) => {
             : suggestions;
     };
 
-    const SuggestionList = () => {
+    const SuggestionList = (): JSX.Element => {
         if (suggestions.length > 0 && showOption) {
-            const listStyle = props.listStyle
-                ? { ...props.listStyle, display: 'block', position: 'absolute' }
+            const listStyle: React.CSSProperties = props.listStyle
+                ? { ...props.listStyle }
                 : {
                     display: 'block',
                     position: 'absolute',
-                    width: '200px',
+                    width: '150px',
                     color: '#495057',
                     fontFamily: "'Roboto', sans-serif",
                     fontSize: '0.75rem',
@@ -47,7 +63,7 @@ export default const AutoSuggestInput = (props) => {
                 };
 
             const itemStyle = props.itemStyle
-                ? { ...props.itemStyle, listStyleType: 'none' }
+                ? { ...props.itemStyle }
                 : {
                     padding: '10px',
                     backgroundColor: '#fff',
@@ -57,7 +73,7 @@ export default const AutoSuggestInput = (props) => {
                 };
 
             const itemHoverStyle = props.itemHoverStyle
-                ? { ...props.itemHoverStyle, listStyleType: 'none' }
+                ? { ...props.itemHoverStyle }
                 : {
                     padding: '10px',
                     backgroundColor: '#e9e9e9',
@@ -66,25 +82,11 @@ export default const AutoSuggestInput = (props) => {
                     listStyleType: 'none',
                 };
 
-            const firstItemStyle = props.firstItemStyle
-                ? props.firstItemStyle
-                : itemStyle;
-
-            const lastItemStyle = props.lastItemStyle
-                ? props.lastItemStyle
-                : itemStyle;
-
             return (
                 <ul style={listStyle}>
                     {suggestions.map((item, index) => {
                         const iStyle =
-                            index === activeIndex
-                                ? itemHoverStyle
-                                : suggestions.length === index + 1
-                                    ? lastItemStyle
-                                    : index === 0
-                                        ? firstItemStyle
-                                        : itemStyle;
+                            index === activeIndex ? itemHoverStyle : itemStyle;
 
                         return (
                             <li
@@ -100,20 +102,24 @@ export default const AutoSuggestInput = (props) => {
                 </ul>
             );
         }
+
+        return <></>;
     };
 
-    const onItemSelect = (event) => {
-        updateValue(event.target.innerText);
+    const onItemSelect = (event: any) => {
+        const listItem = event.target as HTMLLIElement;
+        const value = listItem.innerText;
+        updateValue(value);
     };
 
-    const updateValue = (value) => {
+    const updateValue = (value: string) => {
         setValue(value);
         setShowOption(false);
         setActiveIndex(-1);
         props.onChange(value);
     };
 
-    const onKeyDown = (event) => {
+    const onKeyDown = (event: any) => {
         const index = activeIndex;
         let active = '';
 
@@ -141,13 +147,13 @@ export default const AutoSuggestInput = (props) => {
         }
     };
 
-    const onBlur = (event) => {
+    const onBlur = (event: any) => {
         setShowOption(false);
         setActiveIndex(-1);
     };
 
     return (
-        <>
+        <div>
             <input
                 type="text"
                 autoComplete="off"
@@ -163,6 +169,8 @@ export default const AutoSuggestInput = (props) => {
                 value={value}
             />
             <SuggestionList />
-        </>
+        </div>
     );
 };
+
+export default AutoSuggestInput;

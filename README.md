@@ -1,8 +1,8 @@
 # A simple react auto suggest input box
 
-A simple baisc auto suggest input box for react form, just pass the list of suggestions and get the selected value in react state for futher processing.
+This is a simple, basic auto-suggest input box for React forms. To use it, simply pass in a list of suggestions and retrieve the selected value using a callback function. This component is compatible with TypeScript as well.
 
-Please see the [`DEMO`](https://stackutils.com/#/autosuggest){:target="\_blank" rel="noopener"} here
+Please see the [`DEMO`]( https://stackutils.com/#/autosuggest) here
 
 ## Install
 
@@ -23,58 +23,7 @@ yarn add autosuggest-input-box
 ```javascript
 import AutoSuggestInput from "autosuggest-input-box";
 
-const suggestions = [
-  "China",
-  "India",
-  "United States",
-  "Indonesia",
-  "Pakistan",
-  "Brazil",
-  "Nigeria",
-  "Bangladesh",
-  "Russia",
-  "Mexico",
-  "Japan",
-  "Ethiopia",
-  "Philippines",
-  "gypt",
-  "Vietnam",
-  "DR Congo",
-  "Turkey",
-  "Iran",
-  "Germany",
-  "Thailand",
-  "United Kingdom",
-  "France",
-  "Italy",
-  "Tanzania",
-  "SouthAfrica",
-  "Myanmar",
-  "Kenya",
-  "South Korea",
-  "Colombia",
-  "Spain",
-  "Uganda",
-  "Argentina",
-  "Algeria",
-  "Sudan",
-  "Ukraine",
-  "Iraq",
-  "Afghanistan",
-  "Poland",
-  "Canada",
-  "Moocco",
-  "Saudi Arabia",
-  "Uzbekistan",
-  "Peru",
-  "Angola",
-  "Malaysia",
-  "Mozambique",
-  "Ghana",
-  "Yemen",
-  "Nepal",
-  "Venezuela",
-];
+const suggestions = ["China","India","United States","Indonesia","Pakistan","Brazil","Nigeria","Bangladesh","Russia","Mexico","Japan","Ethiopia","Philippines","gypt","Vietnam","DR Congo","Turkey","Iran","Germany","Thailand","United Kingdom","France","Italy","Tanzania","SouthAfrica","Myanmar","Kenya","South Korea","Colombia","Spain","Uganda","Argentina","Algeria","Sudan","Ukraine","Iraq","Afghanistan","Poland","Canada","Moocco","Saudi Arabia","Uzbekistan","Peru","Angola","Malaysia","Mozambique","Ghana","Yemen","Nepal","Venezuela"];
 
 const App = () => {
   const onChange = (input) => {

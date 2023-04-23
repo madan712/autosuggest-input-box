@@ -2,7 +2,7 @@
 
 A simple baisc auto suggest input box for react form, just pass the list of suggestions and get the selected value in react state for futher processing.
 
-Please see the [`DEMO`]( https://stackutils.com/#/autosuggest) here
+Please see the [`DEMO`](https://stackutils.com/#/autosuggest){:target="\_blank" rel="noopener"} here
 
 ## Install
 
@@ -23,7 +23,58 @@ yarn add autosuggest-input-box
 ```javascript
 import AutoSuggestInput from "autosuggest-input-box";
 
-const suggestions = ["China","India","United States","Indonesia","Pakistan","Brazil","Nigeria","Bangladesh","Russia","Mexico","Japan","Ethiopia","Philippines","gypt","Vietnam","DR Congo","Turkey","Iran","Germany","Thailand","United Kingdom","France","Italy","Tanzania","SouthAfrica","Myanmar","Kenya","South Korea","Colombia","Spain","Uganda","Argentina","Algeria","Sudan","Ukraine","Iraq","Afghanistan","Poland","Canada","Moocco","Saudi Arabia","Uzbekistan","Peru","Angola","Malaysia","Mozambique","Ghana","Yemen","Nepal","Venezuela"];
+const suggestions = [
+  "China",
+  "India",
+  "United States",
+  "Indonesia",
+  "Pakistan",
+  "Brazil",
+  "Nigeria",
+  "Bangladesh",
+  "Russia",
+  "Mexico",
+  "Japan",
+  "Ethiopia",
+  "Philippines",
+  "gypt",
+  "Vietnam",
+  "DR Congo",
+  "Turkey",
+  "Iran",
+  "Germany",
+  "Thailand",
+  "United Kingdom",
+  "France",
+  "Italy",
+  "Tanzania",
+  "SouthAfrica",
+  "Myanmar",
+  "Kenya",
+  "South Korea",
+  "Colombia",
+  "Spain",
+  "Uganda",
+  "Argentina",
+  "Algeria",
+  "Sudan",
+  "Ukraine",
+  "Iraq",
+  "Afghanistan",
+  "Poland",
+  "Canada",
+  "Moocco",
+  "Saudi Arabia",
+  "Uzbekistan",
+  "Peru",
+  "Angola",
+  "Malaysia",
+  "Mozambique",
+  "Ghana",
+  "Yemen",
+  "Nepal",
+  "Venezuela",
+];
 
 const App = () => {
   const onChange = (input) => {
@@ -53,4 +104,4 @@ export default App;
 | [`listStyle`](#placeholder)      | CSSProperties |          | List react style object                                                                                    |
 | [`itemStyle`](#placeholder)      | CSSProperties |          | Item react style object                                                                                    |
 | [`itemHoverStyle`](#placeholder) | CSSProperties |          | Input hover react style object                                                                             |
-| [`className`](#className)        | String        |          | Deprecated from v1.0.14                                                                                    |
+| [`className`](#className)        | String        |          | Deprecated from v1.0.13                                                                                    |

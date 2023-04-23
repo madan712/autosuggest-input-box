@@ -17,9 +17,38 @@ interface Props {
     className?: string;
 }
 
+const listStyleDefault: React.CSSProperties = {
+    display: 'block',
+    position: 'absolute',
+    width: '150px',
+    color: '#495057',
+    fontFamily: "'Roboto', sans-serif",
+    fontSize: '0.75rem',
+    fontWeight: '400',
+    padding: '0px 0px',
+    margin: '0px',
+    zIndex: '999',
+};
+
+const itemStyleDefault = {
+    padding: '10px',
+    backgroundColor: '#fff',
+    border: '1px solid #d4d4d4',
+    borderTop: 'none',
+    listStyleType: 'none',
+};
+
+const itemHoverStyleDefault = {
+    padding: '10px',
+    backgroundColor: '#e9e9e9',
+    border: '1px solid #d4d4d4',
+    borderTop: 'none',
+    listStyleType: 'none',
+};
+
 const AutoSuggestInput = (props: Props) => {
     const [showOption, setShowOption] = useState<boolean>(false);
-    const [value, setValue] = useState<string>('in');
+    const [value, setValue] = useState<string>('');
     const [suggestions, setSuggestions] = useState<string[]>([]);
     const [activeIndex, setActiveIndex] = useState<number>(-1);
 
@@ -28,6 +57,7 @@ const AutoSuggestInput = (props: Props) => {
         setValue(input);
         setSuggestions(getSuggestions(input));
         setShowOption(true);
+        props.onChange(input);
     };
 
     const getSuggestions = (input: string): string[] => {
@@ -48,39 +78,16 @@ const AutoSuggestInput = (props: Props) => {
     const SuggestionList = (): JSX.Element => {
         if (suggestions.length > 0 && showOption) {
             const listStyle: React.CSSProperties = props.listStyle
-                ? { ...props.listStyle }
-                : {
-                    display: 'block',
-                    position: 'absolute',
-                    width: '150px',
-                    color: '#495057',
-                    fontFamily: "'Roboto', sans-serif",
-                    fontSize: '0.75rem',
-                    fontWeight: '400',
-                    padding: '0px 0px',
-                    margin: '0px',
-                    zIndex: '999',
-                };
+                ? { ...props.listStyle, ...listStyleDefault }
+                : listStyleDefault;
 
             const itemStyle = props.itemStyle
-                ? { ...props.itemStyle }
-                : {
-                    padding: '10px',
-                    backgroundColor: '#fff',
-                    border: '1px solid #d4d4d4',
-                    borderTop: 'none',
-                    listStyleType: 'none',
-                };
+                ? { ...itemStyleDefault, ...props.itemStyle }
+                : itemStyleDefault;
 
             const itemHoverStyle = props.itemHoverStyle
-                ? { ...props.itemHoverStyle }
-                : {
-                    padding: '10px',
-                    backgroundColor: '#e9e9e9',
-                    border: '1px solid #d4d4d4',
-                    borderTop: 'none',
-                    listStyleType: 'none',
-                };
+                ? { ...itemHoverStyleDefault, ...props.itemHoverStyle }
+                : itemHoverStyleDefault;
 
             return (
                 <ul style={listStyle}>
@@ -107,8 +114,7 @@ const AutoSuggestInput = (props: Props) => {
     };
 
     const onItemSelect = (event: any) => {
-        const listItem = event.target as HTMLLIElement;
-        const value = listItem.innerText;
+        const value = event.target.innerText;
         updateValue(value);
     };
 

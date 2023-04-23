@@ -1,6 +1,6 @@
 {
   "name": "autosuggest-input-box",
-  "version": "1.0.14",
+  "version": "2.0.0",
   "description": "A simple react autosuggestion input field",
   "main": "dist/autosuggest-input-box.js",
   "scripts": {
@@ -32,5 +32,6 @@
   "bugs": {
     "url": "https://github.com/madan712/autosuggest-input-box/issues"
   },
-  "homepage": "https://github.com/madan712/autosuggest-input-box#readme"
+  "homepage": "https://github.com/madan712/autosuggest-input-box#readme",
+  "types": "./dist/autosuggest-input-box.d.ts"
 }

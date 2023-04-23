@@ -24,15 +24,15 @@ import AutoSuggestInput from "autosuggest-input-box";
 const suggestions = ["China","India","United States","Indonesia","Pakistan","Brazil","Nigeria","Bangladesh","Russia","Mexico","Japan","Ethiopia","Philippines","gypt","Vietnam","DR Congo","Turkey","Iran","Germany","Thailand","United Kingdom","France","Italy","Tanzania","SouthAfrica","Myanmar","Kenya","South Korea","Colombia","Spain","Uganda","Argentina","Algeria","Sudan","Ukraine","Iraq","Afghanistan","Poland","Canada","Moocco","Saudi Arabia","Uzbekistan","Peru","Angola","Malaysia","Mozambique","Ghana","Yemen","Nepal","Venezuela"];
 
 const App = () => {
-    const onChange = (input) => {
-        console.log(input);
-    };
-    return (
-        <div>
-            Country:
-            <AutoSuggestInput list={suggestions} onChange={onChange} />
-        </div>
-    );
+  const onChange = (input) => {
+    console.log(input);
+  };
+  return (
+    <div>
+      Country:
+      <AutoSuggestInput list={suggestions} onChange={onChange} />
+    </div>
+  );
 };
 
 export default App;
@@ -41,7 +41,7 @@ export default App;
 ## API
 
 | Prop                             | Type          | Required | Description                                                                                                |
-|:---------------------------------|:--------------| :------: |:-----------------------------------------------------------------------------------------------------------|
+| :------------------------------- | :------------ | :------: | :--------------------------------------------------------------------------------------------------------- |
 | [`list`](#list)                  | string[]      |    ✓     | This contains list of values to be shown as suggestions                                                    |
 | [`onChange`](#onChange)          | Function      |    ✓     | This function is used to capture the change in input box. It can be used to update the state in your file. |
 | [`id`](#id)                      | String        |          | Element id to uniquely identify the input box in DOM                                                       |

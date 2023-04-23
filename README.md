@@ -2,6 +2,8 @@
 
 A simple baisc auto suggest input box for react form, just pass the list of suggestions and get the selected value in react state for futher processing.
 
+Please see the [`DEMO`]( https://stackutils.com/#/autosuggest) here
+
 ## Install
 
 ### npm
